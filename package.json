@@ -1,0 +1,92 @@
+{
+  "name": "stream-layout-glow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "npm-run-all lint:*",
+    "lint:tsc": "tsc -p . --noEmit",
+    "lint:lint": "xo",
+    "build": "npm-run-all lint:* build:*",
+    "build:tsc": "parcel build ./src/index.ts --out-file ./lib/index.js --target browser"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kolyaventuri/stream-layout-glow.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kolyaventuri/stream-layout-glow/issues"
+  },
+  "homepage": "https://github.com/kolyaventuri/stream-layout-glow#readme",
+  "devDependencies": {
+    "@types/node": "^13.7.1",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "eslint": "^6.8.0",
+    "eslint-config-xo": "^0.29.0",
+    "eslint-config-xo-typescript": "^0.26.0",
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.12.4",
+    "pre-commit": "^1.2.2",
+    "ts-node": "^8.6.2",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.7.5",
+    "xo": "^0.26.0"
+  },
+  "pre-commit": [
+    "lint:tsc",
+    "lint:lint"
+  ],
+  "xo": {
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": [
+        "./tsconfig.json"
+      ]
+    },
+    "extends": [
+      "xo-typescript",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "extensions": [
+      "ts"
+    ],
+    "space": true,
+    "compilerOptions": {
+      "strict": true
+    },
+    "rules": {
+      "@typescript-eslint/camelcase": 0,
+      "@typescript-eslint/member-naming": [
+        "error",
+        {
+          "private": "^__",
+          "protected": "^_"
+        }
+      ],
+      "indent": 0,
+      "@typescript-eslint/indent": [
+        "error",
+        2
+      ],
+      "@typescript-eslint/no-explicit-any": 0
+    },
+    "overrides": [
+      {
+        "files": "test/**/*.ts",
+        "rules": {
+          "@typescript-eslint/explicit-function-return-type": 0
+        }
+      }
+    ],
+    "env": [],
+    "browser": [
+      "**/*.ts"
+    ],
+    "ignore": [
+      "*.js"
+    ]
+  }
+}
