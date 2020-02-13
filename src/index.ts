@@ -1,4 +1,8 @@
-// TODO: Build the app
-import foo from './second-module';
+import createCanvas from './creator';
 
-console.log('Hello world!', foo);
+const {canvas, context, width, height} = createCanvas();
+
+document.body.append(canvas);
+
+context.fillStyle = '#000000';
+context.fillRect(0, 0, width, height);

@@ -8,7 +8,8 @@
     "lint:tsc": "tsc -p . --noEmit",
     "lint:lint": "xo",
     "build": "npm-run-all lint:* build:*",
-    "build:tsc": "parcel build ./src/index.ts --out-file ./lib/index.js --target browser"
+    "build:tsc": "parcel build ./src/index.ts --target browser",
+    "watch": "parcel watch ./src/index.ts --target browser --no-hmr"
   },
   "repository": {
     "type": "git",
@@ -48,7 +49,8 @@
     },
     "extends": [
       "xo-typescript",
-      "plugin:@typescript-eslint/recommended"
+      "plugin:@typescript-eslint/recommended",
+      "xo/browser"
     ],
     "extensions": [
       "ts"
