@@ -1,8 +1,16 @@
 import createCanvas from './creator';
+import drawFn from './draw';
 
 const {canvas, context, width, height} = createCanvas();
 
 document.body.append(canvas);
 
-context.fillStyle = '#000000';
-context.fillRect(0, 0, width, height);
+const draw = drawFn.bind(this, {context, width, height});
+
+/* Setup the draw loop */
+const drawLoop = (): void => {
+  draw();
+  window.requestAnimationFrame(drawLoop);
+};
+
+drawLoop();
